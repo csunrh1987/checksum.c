@@ -13,14 +13,14 @@
 #include <unistd.h>
 
 #define max_int (255)
-#define byte (char)
+#define byte unsigned char
 
 int main (int argc, char * argv[], char ** envp) {
 
   int count = 10;
   int sum = 0;   
-  char checksum; 
-  char complement;
+  byte checksum; 
+  byte complement;
   int quotient;
   int remainder;
  
@@ -28,16 +28,22 @@ int main (int argc, char * argv[], char ** envp) {
 
   /* the following is the prototype for the read system call */
   /* int read(int fildes, void *buf, size_t nbyte);  */
-	int header[10];
-	int ret; 
+  int header[10];
+  
+  read(0, &header, 10); //STDIN_FILENO
+
 	for (int i = 0; i < count; i++) {
-	ret = read(0, (void *) &header, 10);
-	sum = ret + sum;
+		if (i=6) {
+		checksum = header[i];
+		header[i] = 0;
+		}
+		
+		sum = sum + header[i];
 	}
 	
 	
-	sum = sum - header[5];
-	checksum = header[5];
+	
+
 
 	quotient = sum/(max_int+1);
 	remainder = sum%(max_int+1);
