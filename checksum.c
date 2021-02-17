@@ -23,17 +23,18 @@ int main (int argc, char * argv[], char ** envp) {
   byte complement;
   int quotient;
   int remainder;
+  byte header[10];
  
   
 
   /* the following is the prototype for the read system call */
   /* int read(int fildes, void *buf, size_t nbyte);  */
-  int header[10];
+
   
-  read(0, &header, 10); //STDIN_FILENO
+  read(STDIN_FILENO, &header, 10); //STDIN_FILENO
 
 	for (int i = 0; i < count; i++) {
-		if (i=6) {
+		if (i == 5) {
 		checksum = header[i];
 		header[i] = 0;
 		}
