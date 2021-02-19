@@ -40,19 +40,12 @@ int main (int argc, char * argv[], char ** envp) {
 		}
 		
 		sum = sum + header[i];
-	}
-	
-	
-	
-
-
 	quotient = sum/(max_int+1);
 	remainder = sum%(max_int+1);
 	sum = quotient + remainder;
-	complement = max_int-sum;
-	
-	
+	}
 
+	complement = max_int-sum;
 	
   fprintf(stdout, "Stored Checksum: %d, Computed Checksum: %d\n", checksum, complement);
   if (checksum != complement ) {
